@@ -11,7 +11,8 @@ let user = {username: "", avatar: ""};
 app.post('/sign-up', (req, res) => {
     console.log("API Sign Up");
     let login = req.body;
-    user = {username: login.username, avatar: login.avatar}
+    user.username = login.username;
+    user.avatar = login.avatar;
     res.send("OK");  
 })
 
@@ -32,7 +33,7 @@ app.post('/tweets', (req, res) => {
 app.get('/tweets', (req, res) => {
     let alltweets = [];
     if(posts.length > 10) {
-        for(let i = 0; i < 9; i++) {
+        for(let i = 0; i < 10; i++) {
             alltweets.push(posts[posts.length -1 - i])
         }
     }else{
@@ -44,5 +45,5 @@ app.get('/tweets', (req, res) => {
 })
 
 app.listen(5000, () => {
-    console.log(`Running at http://localhost:${5000}`)
+    console.log(`API is unning at http://localhost:5000`)
 })
